@@ -20,5 +20,5 @@ if !exists('g:textobj_ruby_inclusive')
 endif
 
 if !exists('g:ruby_block_openers')
-  let g:ruby_block_openers = '%(<%(def|if|module|class)>|.*<do>)'
+  let g:ruby_block_openers = '%(<%(def|if|module|class|until|begin)>|.*<do>)'
 endif
