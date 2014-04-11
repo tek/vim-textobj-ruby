@@ -53,7 +53,7 @@ endfunction "}}}
 
 function! textobj#ruby#a(meth) abort "{{{
   let [top, bottom] = textobj#ruby#saved_view(a:meth)
-  if g:textobj_rubyblock_inclusive
+  if g:textobj_ruby_inclusive
     while(top > 1 && getline(top - 1) =~ '^\s*$\|^\s*#')
       let top -= 1
     endwhile

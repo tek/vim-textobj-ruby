@@ -16,7 +16,7 @@ call textobj#user#plugin('ruby', {
       \ })
 
 if !exists('g:textobj_ruby_inclusive')
-  let g:textobj_rubyblock_inclusive = 1
+  let g:textobj_ruby_inclusive = 1
 endif
 
 if !exists('g:ruby_block_openers')
