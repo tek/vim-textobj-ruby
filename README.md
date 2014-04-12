@@ -27,8 +27,8 @@ Consult the documentation of [textobj-user][1] for custom mappings.
 
 The plugin uses a consistent line based approach, with the lines containing the
 delimiters being part of the block.
-This means that when invoking the text object on the word before a `do` will
-select the block opened by it, which is especially useful on empty blocks.
+This means that invoking the text object on the word before a `do` will select
+the block opened by it, which is especially useful on empty blocks.
 When the `ir` object is used on the opener line, the selection will begin on
 the next line.
 
