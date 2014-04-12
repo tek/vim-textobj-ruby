@@ -15,6 +15,7 @@ function! textobj#ruby#bounds() abort "{{{
   if !(bottom || top)
     let [bottom, top] = [0, 0]
   endif
+  call cursor(bottom, 0)
   return [top, bottom]
 endfunction "}}}
 
@@ -35,7 +36,7 @@ function! textobj#ruby#recursive(rex) abort "{{{
       let result = [top, bottom]
       break
     endif
-    call cursor(top - 1, 2)
+    call cursor(bottom + 1, 2)
   endwhile
   return result
 endfunction "}}}
