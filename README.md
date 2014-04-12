@@ -1,11 +1,13 @@
 ## Description
 
-This defines three ruby text objects – block, class and function.
+This defines four ruby text objects – block, class, function and name.
 A block is delimited by the regex in the variable `g:ruby_block_openers` and
 `end`.
 A function is a special case of block, starting with `def`, class works the
 same way.
 The inner variant doesn't include the delimiter lines.
+
+A name is a module-scoped identifier like `Module::Klass`.
 
 ## Usage
 
