@@ -20,6 +20,10 @@ call textobj#user#plugin('ruby', {
       \   'select-i': 'ic',
       \   'select-i-function': 'textobj#ruby#i_class',
       \ },
+      \ 'name': {
+      \   'pattern': '\w\+\%(::\w\+\)*',
+      \   'select': ['an', 'in'],
+      \ },
       \ })
 
 if !exists('g:textobj_ruby_inclusive')
