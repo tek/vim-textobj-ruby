@@ -12,7 +12,14 @@ call textobj#user#plugin('ruby', {
       \   'select-a-function': 'textobj#ruby#a_func',
       \   'select-i': 'if',
       \   'select-i-function': 'textobj#ruby#i_func',
-      \ }
+      \ },
+      \ 'class': {
+      \   'sfile': expand('<sfile>:p'),
+      \   'select-a': 'ac',
+      \   'select-a-function': 'textobj#ruby#a_class',
+      \   'select-i': 'ic',
+      \   'select-i-function': 'textobj#ruby#i_class',
+      \ },
       \ })
 
 if !exists('g:textobj_ruby_inclusive')

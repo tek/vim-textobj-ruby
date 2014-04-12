@@ -1,15 +1,16 @@
 ## Description
 
-This defines two ruby text objects – block and function.
+This defines three ruby text objects – block, class and function.
 A block is delimited by the regex in the variable `g:ruby_block_openers` and
 `end`.
-A function is a special case of block, starting with `def`.
+A function is a special case of block, starting with `def`, class works the
+same way.
 The inner variant doesn't include the delimiter lines.
 
 ## Usage
 
 By default, the omaps `ir` and `ar` are used for a block; `if` and `af` for a
-function.
+function, `ic` and `ac` for a class.
 
 ## Customization
 

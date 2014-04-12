@@ -26,18 +26,26 @@ function! textobj#ruby#block() abort "{{{
   return textobj#ruby#bounds()
 endfunction "}}}
 
-function! textobj#ruby#func() abort "{{{
+function! textobj#ruby#recursive(rex) abort "{{{
   let top = -1
   let result = [0, 0]
   while top != 0
     let [top, bottom] = textobj#ruby#bounds()
-    if getline(top) =~ '\v^\s*def>'
+    if getline(top) =~ a:rex
       let result = [top, bottom]
       break
     endif
     call cursor(top - 1, 2)
   endwhile
   return result
+endfunction "}}}
+
+function! textobj#ruby#func() abort "{{{
+  return textobj#ruby#recursive('\v^\s*def>')
+endfunction "}}}
+
+function! textobj#ruby#class() abort "{{{
+  return textobj#ruby#recursive('\v^\s*class>')
 endfunction "}}}
 
 function! textobj#ruby#saved_view(meth) abort "{{{
@@ -74,10 +82,18 @@ function! textobj#ruby#a_func() abort "{{{
   return textobj#ruby#a('func')
 endfunction "}}}
 
+function! textobj#ruby#a_class() abort "{{{
+  return textobj#ruby#a('class')
+endfunction "}}}
+
 function! textobj#ruby#i_block() abort "{{{
   return textobj#ruby#i('block')
 endfunction "}}}
 
 function! textobj#ruby#i_func() abort "{{{
   return textobj#ruby#i('func')
+endfunction "}}}
+
+function! textobj#ruby#i_class() abort "{{{
+  return textobj#ruby#i('class')
 endfunction "}}}
