@@ -12,7 +12,7 @@ A name is a module-scoped identifier like `Module::Klass`.
 ## Usage
 
 By default, the omaps `ir` and `ar` are used for a block; `if` and `af` for a
-function, `ic` and `ac` for a class.
+function, `ic`, `ac` for a class and `an` for a name.
 
 Specifying a count selects outer blocks recursively.
 
