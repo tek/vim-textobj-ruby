@@ -19,8 +19,18 @@ function! textobj#ruby#bounds() abort "{{{
   return [top, bottom]
 endfunction "}}}
 
+" before performing the selection, check whether the mapping has been invoked
+" from visual mode (actually tests _not operator-pending_, because either vim
+" or textobj-user goes back to normal mode before arriving here).
+" if in visual, assume that the selection should grow to the next outer block.
+function! textobj#ruby#grow() abort "{{{
+  if g:textobj_ruby_grow && mode(1) != 'no' && getpos('''>') != getpos('''<')
+    call cursor(line('''>') + 1 + s:inner, 2)
+  endif
+endfunction "}}}
+  
 function! textobj#ruby#block() abort "{{{
-  echom mode()
+  call textobj#ruby#grow()
   if mode() == 'V'
     call cursor(line('.') - 1, 2)
   endif
@@ -61,6 +71,7 @@ function! s:pos(line) abort "{{{
 endfunction "}}}
 
 function! textobj#ruby#a(meth) abort "{{{
+  let s:inner = 0
   let [top, bottom] = textobj#ruby#saved_view(a:meth)
   if g:textobj_ruby_inclusive && v:operator != 'c'
     while(top > 1 && getline(top - 1) =~ '^\s*$\|^\s*#')
@@ -71,6 +82,7 @@ function! textobj#ruby#a(meth) abort "{{{
 endfunction "}}}
 
 function! textobj#ruby#i(meth) abort "{{{
+  let s:inner = 1
   let [top, bottom] = textobj#ruby#saved_view(a:meth)
   return ['V', s:pos(top + 1), s:pos(bottom - 1)]
 endfunction "}}}

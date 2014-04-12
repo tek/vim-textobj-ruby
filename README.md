@@ -12,6 +12,8 @@ The inner variant doesn't include the delimiter lines.
 By default, the omaps `ir` and `ar` are used for a block; `if` and `af` for a
 function, `ic` and `ac` for a class.
 
+Specifying a count selects outer blocks recursively.
+
 ## Customization
 
 The variable `g:textobj_ruby_inclusive` controls whether leading comments and a
@@ -33,6 +35,14 @@ most likely want to paste it somewhere else and not leave an additional empty
 line around (given that you separate all functions by a single blank line).
 Comments directly above a block are most likely connected to it, so leaving
 them would be impractical.
+
+When invoked multiple times in visual mode, the selection grows to the next
+larger block, just like when invoking the operator with a count.
+To decide whether to grow, the visual selection is checked – if start and end
+do not match, it is assumed that the selection is already a block.
+This can result in faulty behaviour when invoked from visual mode with o
+nonzero selection and the cursor on the end delimiter line – the next outer
+block will be selected.
 
 ## Dependencies
 
