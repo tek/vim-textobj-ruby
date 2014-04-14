@@ -31,9 +31,8 @@ endfunction "}}}
   
 function! textobj#ruby#block() abort "{{{
   call textobj#ruby#grow()
-  let vcount = get(g:, 'textobj_user_select_count', v:count1)
   let result = textobj#ruby#bounds()
-  for i in range(vcount - 1)
+  for i in range(v:count1 - 1)
     call cursor(line('.') + 1, 0)
     let result = textobj#ruby#bounds()
   endfor
