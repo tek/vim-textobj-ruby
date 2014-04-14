@@ -12,7 +12,7 @@ function! textobj#ruby#bounds() abort "{{{
   call cursor(0, 2)
   let bottom = searchpair(s:start, '', s:end, flags, skip)
   let top = searchpair(s:start, '', s:end, flags . 'b', skip)
-  if !(bottom || top)
+  if !(bottom && top)
     let [bottom, top] = [0, 0]
   endif
   call cursor(bottom, 0)
