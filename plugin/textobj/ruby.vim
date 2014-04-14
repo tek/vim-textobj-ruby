@@ -31,9 +31,18 @@ if !exists('g:textobj_ruby_inclusive')
 endif
 
 if !exists('g:ruby_block_openers')
-  let g:ruby_block_openers = '%(<%(def|if|module|class|until|begin)>|.*<do>)'
+  let g:ruby_block_openers = '%(<%(def|if|module|class|until|begin|while)>' .
+        \ '|.*<do>)'
+endif
+
+if !exists('g:ruby_block_middles')
+  let g:ruby_block_middles = '\v<%(els%(e|if)|rescue|ensure)>'
 endif
 
 if !exists('g:textobj_ruby_grow')
   let g:textobj_ruby_grow = 1
+endif
+
+if !exists('g:textobj_ruby_inner_branch')
+  let g:textobj_ruby_inner_branch = 1
 endif

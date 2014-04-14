@@ -1,5 +1,6 @@
 let s:comment = '\v\s*[^#]?\s*'
 let s:start = '\v^\zs' . s:comment . g:ruby_block_openers
+let s:middle = '\v^\zs' . s:comment . g:ruby_block_middles
 let s:end = '\v^' . s:comment . '<end>\zs'
 let s:flags = 'Wcn'
 let s:skip = 'textobj#ruby#skip()'
@@ -10,7 +11,8 @@ endfunction "}}}
 
 function! textobj#ruby#search(...) abort "{{{
   let flag = get(a:000, 0, '')
-  return searchpair(s:start, '', s:end, s:flags . flag, s:skip)
+  let middle = s:inner && g:textobj_ruby_inner_branch ? s:middle : ''
+  return searchpair(s:start, middle, s:end, s:flags . flag, s:skip)
 endfunction "}}
 
 function! textobj#ruby#bounds() abort "{{{

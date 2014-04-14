@@ -23,6 +23,11 @@ single blank line are included in the `a` object if present, defaulting to 1.
 
 Consult the documentation of [textobj-user][1] for custom mappings.
 
+If `g:textobj_ruby_inner_branch` is `1`, the inner block object will select the
+lines between `else`, `elsif`, `rescue` and `ensure` (configurable via
+`g:ruby_block_middles`) and the boundaries instead of including all conditional
+branches.
+
 ## Details
 
 The plugin uses a consistent line based approach, with the lines containing the
