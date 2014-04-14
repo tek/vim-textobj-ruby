@@ -36,10 +36,11 @@ function! textobj#ruby#grow() abort "{{{
   endif
 endfunction "}}}
   
+" go up one line at first so the loop works for the first iteration
 function! textobj#ruby#block() abort "{{{
   call textobj#ruby#grow()
-  let result = textobj#ruby#bounds()
-  for i in range(v:count1 - 1)
+  call cursor(line('.') - 1, 0)
+  for i in range(v:count1)
     call cursor(line('.') + 1, 0)
     let result = textobj#ruby#bounds()
   endfor
