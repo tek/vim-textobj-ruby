@@ -1,17 +1,22 @@
 let s:comment = '\v\s*[^#]?\s*'
 let s:start = '\v^\zs' . s:comment . g:ruby_block_openers
 let s:end = '\v^' . s:comment . '<end>\zs'
+let s:flags = 'Wcn'
+let s:skip = 'textobj#ruby#skip()'
 
 function! textobj#ruby#skip() abort "{{{
     return getline('.') =~ '\v\S\s<%(if|unless)>\s\S'
 endfunction "}}}
 
+function! textobj#ruby#search(...) abort "{{{
+  let flag = get(a:000, 0, '')
+  return searchpair(s:start, '', s:end, s:flags . flag, s:skip)
+endfunction "}}
+
 function! textobj#ruby#bounds() abort "{{{
-  let flags = 'Wcn'
-  let skip = 'textobj#ruby#skip()'
   call cursor(0, 2)
-  let bottom = searchpair(s:start, '', s:end, flags, skip)
-  let top = searchpair(s:start, '', s:end, flags . 'b', skip)
+  let bottom = textobj#ruby#search()
+  let top = textobj#ruby#search('b')
   if !(bottom && top)
     let [bottom, top] = [0, 0]
   endif
