@@ -31,8 +31,8 @@ if !exists('g:textobj_ruby_inclusive')
 endif
 
 if !exists('g:ruby_block_openers')
-  let g:ruby_block_openers = '%(<%(def|if|module|class|until|begin|while)>' .
-        \ '|.*<do>)'
+  let g:ruby_block_openers = '%(<%(def|if|module|class|until|begin|while|' .
+        \ 'case)>|.*<do>)'
 endif
 
 if !exists('g:ruby_block_middles')
