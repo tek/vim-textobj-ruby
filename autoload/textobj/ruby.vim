@@ -1,12 +1,12 @@
-let s:comment = '\v^\s*#'
-let s:start = '\v^\zs\s*' . g:ruby_block_openers
+let s:comment = '^\s*#'
+let s:start = '\v^\zs%(.* =)?\s*' . g:ruby_block_openers
 let s:middle = '\v^\zs\s*' . g:ruby_block_middles
-let s:end = '\v^\s*<end>\zs'
+let s:end = '\v^\s*<end>.*\zs'
 let s:flags = 'Wcn'
 let s:skip = 'textobj#ruby#skip()'
 
 function! textobj#ruby#skip() abort "{{{
-    return getline('.') =~ '\v\S\s<%(if|unless)>\s\S|' . s:comment
+    return getline('.') =~ s:comment
 endfunction "}}}
 
 function! textobj#ruby#search(...) abort "{{{
