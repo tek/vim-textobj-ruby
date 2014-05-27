@@ -36,7 +36,7 @@ function! textobj#ruby#grow() abort "{{{
   endif
 endfunction "}}}
   
-" go up one line at first so the loop works for the first iteration
+" move up one line initially so the loop works for the first iteration
 function! textobj#ruby#block() abort "{{{
   call textobj#ruby#grow()
   call cursor(line('.') - 1, 0)
@@ -48,9 +48,9 @@ function! textobj#ruby#block() abort "{{{
 endfunction "}}}
 
 function! textobj#ruby#recursive(rex) abort "{{{
-  let top = -1
+  let bottom = -1
   let result = [0, 0]
-  while top != 0
+  while bottom != 0 && bottom != line('$')
     let [top, bottom] = textobj#ruby#bounds()
     if getline(top) =~ a:rex
       let result = [top, bottom]
@@ -88,7 +88,9 @@ function! textobj#ruby#a(meth) abort "{{{
       let top -= 1
     endwhile
   endif
-  return ['V', s:pos(top), s:pos(bottom)]
+  if top > 0
+    return ['V', s:pos(top), s:pos(bottom)]
+  endif
 endfunction "}}}
 
 function! textobj#ruby#i(meth) abort "{{{
