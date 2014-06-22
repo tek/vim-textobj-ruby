@@ -32,7 +32,7 @@ endif
 
 if !exists('g:ruby_block_openers')
   let g:ruby_block_openers = '%(<%(def|if|module|class|until|begin|while|' .
-        \ 'case)>|.*<do>)'
+        \ 'case|unless)>|.*<do>)'
 endif
 
 if !exists('g:ruby_block_middles')
