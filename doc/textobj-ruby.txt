@@ -1,4 +1,4 @@
-*textobj-ruby*  text objects for ruby block, class function and name
+*textobj-ruby.txt*  text objects for ruby block, class function and name
 
 ===============================================================================
 Contents ~

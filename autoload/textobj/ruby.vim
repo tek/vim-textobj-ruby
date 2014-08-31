@@ -1,6 +1,7 @@
 let s:comment = '^\s*#'
-let s:start = '\v^\zs%(.* \=)?\s*' . g:ruby_block_openers
-let s:middle = '\v^\zs\s*' . g:ruby_block_middles
+let s:space_or_eol = '\v\ze%($|\s)'
+let s:start = '\v^\zs%(.* \=)?\s*' . g:ruby_block_openers . s:space_or_eol
+let s:middle = '\v^\zs\s*' . g:ruby_block_middles . s:space_or_eol
 let s:end = '\v^\s*<end>.*\zs'
 let s:flags = 'Wcn'
 let s:skip = 'textobj#ruby#skip()'
