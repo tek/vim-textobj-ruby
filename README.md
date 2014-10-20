@@ -28,6 +28,8 @@ lines between `else`, `elsif`, `rescue` and `ensure` (configurable via
 `g:ruby_block_middles`) and the boundaries instead of including all conditional
 branches.
 
+If `g:textobj_ruby_no_mappings` is `1`, no actual mappings are created.
+
 ## Details
 
 The plugin uses a consistent line based approach, with the lines containing the

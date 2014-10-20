@@ -1,3 +1,5 @@
+let g:textobj_ruby_no_default_key_mappings = 1
+
 call textobj#user#plugin('ruby', {
       \ 'block': {
       \   'sfile': expand('<sfile>:p'),
